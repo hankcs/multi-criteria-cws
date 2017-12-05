@@ -92,7 +92,7 @@ Then, use [HanLP](https://github.com/hankcs/HanLP) for Traditional Chinese to Si
         br.close();
         bw.close();
 ```
-You need to repeat this for the following $4$ files:
+You need to repeat this for the following `4` files:
 
 1. ckip_train_utf16.seg
 2. ckip_truth_utf16.seg
