@@ -99,3 +99,18 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/
+data/cityu/
+data/joint-10in1/
+data/msr/
+data/sxu/
+result/
+dataset/
+data/cnc/
+data/ctb/
+data/udc/
+data/wtb/
+data/zx/
+data/as/
+data/joint-sighan2005/
+data/pku/
