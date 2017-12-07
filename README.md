@@ -1,5 +1,5 @@
 # multi-criteria-cws
-Codes and corpora for paper "Effective Neural Solution for Multi-Criteria Word Segmentation".
+Codes and corpora for paper "Effective Neural Solution for Multi-Criteria Word Segmentation" (Accepted & Forthcoming at SCI-2018).
 
 ### Dependency
 
@@ -34,13 +34,11 @@ Finally, one command performs both training and test on the fly:
 
 ### sighan2005
 
-
-![sighan2005](http://wx3.sinaimg.cn/large/006Fmjmcly1fm5wfej2unj31960r8wl5.jpg)
-
+![sighan2005](http://wx4.sinaimg.cn/large/006Fmjmcly1fm8ru5refwj31960ssah6.jpg)
 
 ### sighan2008
   
-![sighan2008](http://wx3.sinaimg.cn/large/006Fmjmcly1fm5vkympxfj312u0nan41.jpg)
+![sighan2008](http://wx4.sinaimg.cn/large/006Fmjmcly1fm8rakv137j31in0petfw.jpg)
 
 ### 10-in-1
 
