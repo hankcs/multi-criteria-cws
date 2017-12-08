@@ -284,7 +284,7 @@ if __name__ == '__main__':
     convert_conll('udc')
     convert_conll('wtb')
     # make a large joint corpus
-    print('Combining those 10 SC corpora to one joint corpus')
+    print('Combining those 10 corpora to one joint corpus')
     datasets = 'pku', 'msr', 'as', 'cityu', 'sxu', 'ctb', 'zx', 'cnc', 'udc', 'wtb'
     make_joint_corpus(datasets, 'joint-10in1')
     make_bmes('joint-10in1')
@@ -293,7 +293,7 @@ if __name__ == '__main__':
     # print('Converting sighan2008 Simplified Chinese corpus')
     # datasets = 'ctb', 'ckip', 'cityu', 'ncc', 'sxu'
     # convert_all_sighan2008(datasets)
-    # print('Combining those 8 bakeoff corpora to one joint corpus')
-    # datasets = 'pku', 'msr', 'asSC', 'ctb', 'ckip', 'cityu', 'ncc', 'sxu'
+    # print('Combining those 8 sighan corpora to one joint corpus')
+    # datasets = 'pku', 'msr', 'as', 'ctb', 'ckip', 'cityu', 'ncc', 'sxu'
     # make_joint_corpus(datasets, 'joint-sighan2008')
     # make_bmes('joint-sighan2008')
