@@ -101,7 +101,7 @@ Then, uncomment following codes in `convert_corpus.py`:
 
 ```python
     # For researchers who have access to sighan2008 corpus, use official corpora please.
-	print('Converting sighan2008 Simplified Chinese corpus')
+    print('Converting sighan2008 Simplified Chinese corpus')
     datasets = 'ctb', 'ckip', 'cityu', 'ncc', 'sxu'
     convert_all_sighan2008(datasets)
     print('Combining those 8 sighan corpora to one joint corpus')
