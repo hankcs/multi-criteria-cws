@@ -525,7 +525,7 @@ if not options.test:
                 if len(instance.sentence) == 0: continue
                 train_total_instance += 1
 
-                loss_expr = model.neg_log_loss(instance.sentence, instance.tags)
+                loss_expr = model.neg_log_loss(instance.sentence[1:-1], instance.tags[1:-1])
                 # Forward pass
                 loss = loss_expr.scalar_value()
                 # Do backward pass
@@ -650,7 +650,7 @@ with open("{}/testout.txt".format(root_dir), 'w') as raw_writer:
             if len(instance.sentence) == 0: continue
             sentence = instance.sentence
             gold_tags = instance.tags
-            _, out_tags = model.viterbi_loss(instance.sentence, gold_tags, use_margins=False)
+            _, out_tags = model.viterbi_loss(instance.sentence[1:-1], gold_tags[1:-1], use_margins=False)
 
             sentence = utils.restore_sentence(sentence)
             dataset_name = None
@@ -660,7 +660,7 @@ with open("{}/testout.txt".format(root_dir), 'w') as raw_writer:
                     prf_dataset[dataset_name] = utils.CWSEvaluator(t2i)
                 sentence = sentence[1:-1]
                 gold_tags = gold_tags[1:-1]
-                out_tags = out_tags[1:-1]
+                out_tags = out_tags
                 prf_dataset[dataset_name].add_instance(gold_tags, out_tags)
 
             prf.add_instance(gold_tags, out_tags)
