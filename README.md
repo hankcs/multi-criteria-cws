@@ -34,7 +34,9 @@ Finally, one command performs both training and test on the fly:
 
 ### sighan2005
 
-![sighan2005](http://wx4.sinaimg.cn/large/006Fmjmcly1fm8ru5refwj31960ssah6.jpg)
+Our baseline model is Bi-LSTM-CRFs trained on each datasets separately. Then we improved it with multi-criteria learning. In naive treatment (`+naive`), artificial tokens are not used when corpora are combined, in contrast to our method (`+multi`).
+
+![sighan2005](http://wx1.sinaimg.cn/large/006Fmjmcly1fnuh4ka5vij31960ssn7d.jpg)
 
 ### sighan2008
   
