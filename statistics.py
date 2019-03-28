@@ -23,7 +23,7 @@ def count(file):
     size_chars = 0
     dict_word = Counter()
     dict_char = Counter()
-    with open(file) as src:
+    with open(file, encoding='utf-8') as src:
         for line in src:
             size_sentences += 1
             sentence = line.split()

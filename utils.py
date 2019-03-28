@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding:utf-8 -*-
 import codecs
 import errno
 import os
@@ -504,8 +504,8 @@ def evaluate_file(file_name, t2i):
 
 
 def append_tags(src, des, part):
-    with open('data/{}/raw/{}.txt'.format(src, part)) as input, open('data/{}/raw/{}.txt'.format(des, part),
-                                                                     'a') as output:
+    with open('data/{}/raw/{}.txt'.format(src, part), encoding='utf-8') as input, open('data/{}/raw/{}.txt'.format(des, part),
+                                                                     'a', encoding='utf-8') as output:
         for line in input:
             line = line.strip()
             if len(line) > 0:
