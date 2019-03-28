@@ -4,7 +4,7 @@ Codes and corpora for paper "[Effective Neural Solution for Multi-Criteria Word 
 ### Dependency
 
 * Python3
-* [DyNet==2.0.1](https://github.com/hankcs/multi-criteria-cws/issues/1)
+* dynet
 
 ## Quick Start
 

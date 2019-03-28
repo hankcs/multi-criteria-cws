@@ -11,7 +11,6 @@ import re
 
 from utils import make_sure_path_exists, append_tags
 
-
 def normalize(ustring):
     """全角转半角"""
     rstring = ""
@@ -27,14 +26,14 @@ def normalize(ustring):
 
 
 def preprocess(text):
-    rNUM = u'(-|\+)?\d+((\.|·)\d+)?%?'
-    rENG = u'[A-Za-z_.]+'
+    rNUM = '(-|\+)?\d+((\.|·)\d+)?%?'
+    rENG = '[A-Za-z_.]+'
     sent = normalize(text.strip()).split()
     new_sent = []
     for word in sent:
-        word = re.sub(u'\s+', '', word, flags=re.U)
-        word = re.sub(rNUM, u'0', word, flags=re.U)
-        word = re.sub(rENG, u'X', word)
+        word = re.sub('\s+', '', word, flags=re.U)
+        word = re.sub(rNUM, '0', word, flags=re.U)
+        word = re.sub(rENG, 'X', word)
         new_sent.append(word)
     return new_sent
 
@@ -42,8 +41,8 @@ def preprocess(text):
 def to_sentence_list(text, split_long_sentence=False):
     text = preprocess(text)
     delimiter = set()
-    delimiter.update(u'。！？：；…、，（）”’,;!?、,')
-    delimiter.add(u'……')
+    delimiter.update('。！？：；…、，（）”’,;!?、,')
+    delimiter.add('……')
     sent_list = []
     sent = []
     for word in text:
@@ -58,8 +57,8 @@ def to_sentence_list(text, split_long_sentence=False):
     return sent_list
 
 
-def convert_file(src, des, split_long_sentence=False, encode='utf-8'):
-    with open(src, encoding=encode) as src, open(des, 'w') as des:
+def convert_file(src, des, split_long_sentence=False, encode='UTF-8'):
+    with open(src, encoding=encode) as src, open(des, 'w', encoding=encode) as des:
         for line in src:
             for sent in to_sentence_list(line, split_long_sentence):
                 des.write(' '.join(sent) + '\n')
@@ -69,8 +68,8 @@ def convert_file(src, des, split_long_sentence=False, encode='utf-8'):
 
 def split_train_dev(dataset):
     root = 'data/' + dataset + '/raw/'
-    with open(root + 'train-all.txt') as src, open(root + 'train.txt', 'w') as train, open(root + 'dev.txt',
-                                                                                           'w') as dev:
+    with open(root + 'train-all.txt', encoding='UTF-8') as src, open(root + 'train.txt', 'w', encoding='UTF-8') as train, open(root + 'dev.txt',
+                                                                                           'w', encoding='UTF-8') as dev:
         lines = src.readlines()
         idx = int(len(lines) * 0.9)
         for line in lines[: idx]:
@@ -82,7 +81,7 @@ def split_train_dev(dataset):
 def combine_files(one, two, out):
     if os.path.exists(out):
         os.remove(out)
-    with open(one) as one, open(two) as two, open(out, 'a') as out:
+    with open(one, encoding='utf-8') as one, open(two, encoding='utf-8') as two, open(out, 'a', encoding='utf-8') as out:
         for line in one:
             out.write(line)
         for line in two:
@@ -90,7 +89,7 @@ def combine_files(one, two, out):
 
 
 def bmes_tag(input_file, output_file):
-    with open(input_file) as input_data, open(output_file, 'w') as output_data:
+    with open(input_file, encoding='utf-8') as input_data, open(output_file, 'w', encoding='utf-8') as output_data:
         for line in input_data:
             word_list = line.strip().split()
             for word in word_list:
@@ -135,7 +134,7 @@ def convert_sighan2008_dataset(dataset, utf=16):
 
 def convert_sxu():
     dataset = 'sxu'
-    print('Converting corpus {}'.format(dataset))
+    print(('Converting corpus {}'.format(dataset)))
     root = 'data/' + dataset
     make_sure_path_exists(root)
     make_sure_path_exists(root + '/raw')
@@ -147,7 +146,7 @@ def convert_sxu():
 
 def convert_ctb():
     dataset = 'ctb'
-    print('Converting corpus {}'.format(dataset))
+    print(('Converting corpus {}'.format(dataset)))
     root = 'data/' + dataset
     make_sure_path_exists(root)
     make_sure_path_exists(root + '/raw')
@@ -161,7 +160,7 @@ def convert_ctb():
 
 def remove_pos(src, out, delimiter='/'):
     # print(src)
-    with open(src) as src, open(out, 'w') as out:
+    with open(src, encoding='utf-8') as src, open(out, 'w', encoding='utf-8') as out:
         for line in src:
             words = []
             for word_pos in line.split(' '):
@@ -174,7 +173,7 @@ def remove_pos(src, out, delimiter='/'):
 
 def convert_zhuxian():
     dataset = 'zx'
-    print('Converting corpus {}'.format(dataset))
+    print(('Converting corpus {}'.format(dataset)))
     root = 'data/' + dataset
     make_sure_path_exists(root)
     make_sure_path_exists(root + '/raw')
@@ -192,7 +191,7 @@ def convert_zhuxian():
 
 def convert_cncorpus():
     dataset = 'cnc'
-    print('Converting corpus {}'.format(dataset))
+    print(('Converting corpus {}'.format(dataset)))
     root = 'data/' + dataset
     make_sure_path_exists(root)
     make_sure_path_exists(root + '/raw')
@@ -210,7 +209,7 @@ def convert_cncorpus():
 
 def extract_conll(src, out):
     words = []
-    with open(src) as src, open(out, 'w') as out:
+    with open(src, encoding='utf-8') as src, open(out, 'w', encoding='utf-8') as out:
         for line in src:
             line = line.strip()
             if len(line) == 0:
@@ -222,7 +221,7 @@ def extract_conll(src, out):
 
 
 def convert_conll(dataset):
-    print('Converting corpus {}'.format(dataset))
+    print(('Converting corpus {}'.format(dataset)))
     root = 'data/' + dataset
     make_sure_path_exists(root)
     make_sure_path_exists(root + '/raw')
@@ -253,14 +252,14 @@ def make_joint_corpus(datasets, joint):
 
 def convert_all_sighan2005(datasets):
     for dataset in datasets:
-        print('Converting sighan bakeoff 2005 corpus: {}'.format(dataset))
+        print(('Converting sighan bakeoff 2005 corpus: {}'.format(dataset)))
         convert_sighan2005_dataset(dataset)
         make_bmes(dataset)
 
 
 def convert_all_sighan2008(datasets):
     for dataset in datasets:
-        print('Converting sighan bakeoff 2008 corpus: {}'.format(dataset))
+        print(('Converting sighan bakeoff 2008 corpus: {}'.format(dataset)))
         convert_sighan2008_dataset(dataset, 8 if dataset == 'ckip' or dataset == 'cityu' else 16)
         make_bmes(dataset)
 
