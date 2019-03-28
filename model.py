@@ -566,7 +566,7 @@ if not options.test:
         dev_batch_size = math.ceil(len(dev_instances) * 0.01)
         nbatches = (len(dev_instances) + dev_batch_size - 1) // dev_batch_size
         bar = utils.Progbar(target=nbatches)
-        with open("{}/devout-epoch-{:02d}.txt".format(root_dir, epoch + 1), 'w') as dev_writer:
+        with open("{}/devout-epoch-{:02d}.txt".format(root_dir, epoch + 1), 'w', encoding='utf-8') as dev_writer:
             for batch_id, batch in enumerate(utils.minibatches(dev_instances, dev_batch_size)):
                 for idx, instance in enumerate(batch):
                     sentence = instance.sentence
@@ -644,7 +644,7 @@ prf_dataset = {}
 test_batch_size = math.ceil(len(test_instances) * 0.01)
 nbatches = (len(test_instances) + test_batch_size - 1) // test_batch_size
 bar = utils.Progbar(target=nbatches)
-with open("{}/testout.txt".format(root_dir), 'w') as raw_writer:
+with open("{}/testout.txt".format(root_dir), 'w', encoding='utf-8') as raw_writer:
     for batch_id, batch in enumerate(utils.minibatches(test_instances, test_batch_size)):
         for idx, instance in enumerate(batch):
             if len(instance.sentence) == 0: continue
